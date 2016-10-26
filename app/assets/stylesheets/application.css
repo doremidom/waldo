@@ -42,5 +42,29 @@ sidebar{
 	top: 20%;
 	background-color: rgba(255, 255, 255, 0.5);
 }
-
+canvas{
+	position: absolute; 
+	top:0;
+	left:0;
+}
+.guess{
+	width: 200px;
+	position: absolute;
+	background-color: white;
+	border: 1px solid black;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+li{
+	padding: 10px;
+}
+li:nth-child(even){
+	background-color: pink;
+}
+li:hover{
+	background-color: darkgray;
+}
 
