@@ -1,2 +1,21 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+<%= render 'layouts/sidebar' %>
 <%= image_tag("game.jpg") %>
+<% start = startTime %>
+
+<div class="winner">
+	<h1>Congrats!</h1>
+	<p>
+	You won. Enter your name to see your ranking.
+	</p>
+
+	<%= form_for(:winner, url: winners_path) do |f| %>
+		<%= f.text_field :name, placeholder: 'enter your name' %>
+		<%= f.hidden_field :start_time, :value => start %>
+
+		<%= f.submit "enter" , class: "btn btn-primary" %>
+
+	<%end%>
+
+</div>

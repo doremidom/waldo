@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   root to: "game#index"
 
+  resources :winners, only: [:new, :create, :index]
+
 end

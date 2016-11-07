@@ -3,8 +3,6 @@ $(document).ready(function() {
 	var c = can.getContext('2d');
 	var person
 
-	
-
 	var waldo = {
 				name: "waldo",
 				top: [1232,1359],
@@ -32,7 +30,7 @@ $(document).ready(function() {
 		for (var i in people){
 			var person = people[i]
 			if (inRange(x,y, person.top, person.bottom)){
-				return person.name
+				return person
 			}
 		}
 		return false
@@ -65,15 +63,33 @@ $(document).ready(function() {
 	}
 
 	function guess(li){
-		var guess = li.attr('id')
+		var guess = li.attr('id');
 
-		if (guess == person) {
+		if (guess == person.name) {
+			var index = people.indexOf(person);
+			console.log(index)
+			people.splice(index, 1);
+
 			alert('you got it!')
+			if (checkWin()){
+				console.log('game over')
+				gameOver();
+			}
 		}
 		else{
 			alert('try again')
 		}
+	}
 
+	function checkWin(){
+		if (people.length == 0){
+			return true;
+		}
+		return false;
+	}
+
+	function gameOver(){
+		alert($('div.winner').attr('class'));
 	}
 
   $('canvas').click(function(e) {
@@ -86,14 +102,19 @@ $(document).ready(function() {
     var x = (e.pageX - offset.left)
     var y = (e.pageY - offset.top)
 
-    drawTargetBox(x, y)
-    addGuessDiv(x,y)
-    person = whosThere(x,y)
+    if(people.length > 0){
+	    drawTargetBox(x, y)
+	    addGuessDiv(x,y)
+	    person = whosThere(x,y)
+	}
 
+	gameOver();
 
   });
 
   $('body').on('click', 'li', function(e) {
   	guess($(this))
   });
+
+
 });
