@@ -89,7 +89,7 @@ $(document).ready(function() {
 	}
 
 	function gameOver(){
-		alert($('div.winner').attr('class'));
+		alert("You won!")
 	}
 
   $('canvas').click(function(e) {
@@ -107,8 +107,6 @@ $(document).ready(function() {
 	    addGuessDiv(x,y)
 	    person = whosThere(x,y)
 	}
-
-	gameOver();
 
   });
 
